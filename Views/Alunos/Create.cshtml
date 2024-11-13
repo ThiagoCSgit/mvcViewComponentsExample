@@ -1,0 +1,48 @@
+﻿@model Aluno
+
+<h4>Preencha os dados</h4>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            @* retorna os erros das validações da controller *@
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control"/>
+                @* span onde será mostrado o erro de validação*@
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataNascimento" class="control-label"></label>
+                <input asp-for="DataNascimento" class="form-control" />
+                <span asp-validation-for="DataNascimento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailConfirmacao" class="control-label"></label>
+                <input asp-for="EmailConfirmacao" class="form-control" />
+                <span asp-validation-for="EmailConfirmacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Avaliacao" class="control-label"></label>
+                <input asp-for="Avaliacao" class="form-control" />
+                <span asp-validation-for="Avaliacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Ativo" class="form-check-input" /> @Html.DisplayNameFor(Model => Model.Ativo)
+            </div>
+            <button class="btn btn-info">Enviar</button>
+        </form>
+    </div>
+</div>
+
+@* o bloco abaixo só é executado após a função RenderBody() no Layout e após as chamadas de arquivos javascripts presentes nele, esse bloco pode ter qualquer nome, não precisa
+    ser necessáriamente "Scripts", só precisa ser o mesmo que está lá no RenderSection.
+*@
+@section Scripts{
+    await @Html.RenderPartialAsync("_ValidationScriptsPartial");
+}

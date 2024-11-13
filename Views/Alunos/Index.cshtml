@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Aluno>
+
+    <table class="table">
+        <thread>
+            <tr>
+                <th>@Html.DisplayNameFor(Model => Model.Nome)</th>
+            </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(Model => Model.DataNascimento)</th>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(Model => Model.Email)</th>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(Model => Model.Avaliacao)</th>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(Model => Model.Ativo)</th>
+        </tr>
+        </thread>
+        <tbody>
+        @{
+            foreach(var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataNascimento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Avaliacao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ativo)
+                    </td>
+                    <td>
+                        //asp-route-[nome do parametro da controller]
+                        <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                        <a asp-action="Details" asp-route-id="@item.Id">Editar</a>
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
